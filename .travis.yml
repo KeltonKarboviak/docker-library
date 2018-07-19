@@ -4,6 +4,7 @@ services:
   - docker
 env:
   global:
+  - REPO=keltonkarboviak
   - DOCKER_REPO=keltonkarboviak
   - DOCKER_USERNAME=keltonkarboviak
   - secure: AnAUYRtcCTV9+C6X1oWtY2yHQ1mAlJGR+kzSflBjiuuNtupwNJ4P9U312E2SzTdwOial0j2YreNoMNLJlu5prelHnVPQzUTpliiYpk4uFIkyBIjBU0gs58rgwkat2YZpH82uuVDbeDXnvLf/K9t7tuyfWBz3t+cUSyyR0fysr6PlxB2SuEx3IuIl9bpUOPINpaiyFEGpOTREhLAhFgv2IRkC3paoqiEJtpGZ13hczzaowHmymPDHwyZzk6HaConiDUZYQKNWy2n+TQnoyjmhuRWkrSOFePwR22T62B2IYPyJDa8LCkV4SuflBg6Fov4pBX6Y/42lymF1hJu1OFA3cGEsWk+6SVb4mxKpt0C2R3lOjE5sLVu3ZXE3WKpll2//459Mo3ZRFQWVxFwVRIayxLk78udIZFlIM6U+tWY9jr+9av5cB3eIOhxN8ntqek6nAXWABEBvCBnotd7DnIz3gohA4uHrrH1gW+kX96s44Otzvlohh/aHggX7gAYOAFT1CktLcbdiNOsABsANcQl1dP21MHZaeAvLrXQobDZVV1+9jB8+4B6he1bSBzJuRWvkr+HzUXnhCygAJ9iLkCfofQhI9mLvTbr+rkyU2t5/NnvDB6/61b7V3qBgxAmaKLn9ARug5pvG0R6N+mlxIGG8d0zTmm7QK96otaOoWci5wyc=
@@ -17,7 +18,6 @@ before_script:
   - cd "${LANGUAGE}-builder/"
   - LANGUAGE_UPPER=$(echo $LANGUAGE | tr [:lower:] [:upper:])
   - IMAGE="${LANGUAGE}-builder"
-  - IMAGE="$REPO/${LANGUAGE}-builder:$VERSION"
 
 script:
   - echo "** Building $IMAGE in $PWD **"
