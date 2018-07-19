@@ -1,6 +1,6 @@
 # Ramsey In-House docker-library
 
-[![Build Status](https://travis-ci.com/KeltonKarboviak/docker-library.svg?branch=master)](https://travis-ci.com/KeltonKarboviak/docker-library)
+[![Build Status](https://img.shields.io/travis/KeltonKarboviak/docker-library/master.svg?logo=travis)](https://travis-ci.com/KeltonKarboviak/docker-library)
 
 This is the home for `Dockerfile`s behind the images available at https://hub.docker.com/u/ramseyinhouse
 
