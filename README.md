@@ -1,5 +1,7 @@
 # Ramsey In-House docker-library
 
+[![Build Status](https://travis-ci.com/KeltonKarboviak/docker-library.svg?branch=master)](https://travis-ci.com/KeltonKarboviak/docker-library)
+
 This is the home for `Dockerfile`s behind the images available at https://hub.docker.com/u/ramseyinhouse
 
 - They are created specifically for building/developing libraries such as ruby gems and node/php packages. They are not intended for running applications.
