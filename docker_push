@@ -1,11 +1,11 @@
 #!/bin/bash
 
-repo=$1
+user=$1
 image=$2
 tag=$3
 
-echo "** Pushing $image:$tag to $repo **"
+echo "** Pushing $image:$tag to $user **"
 
 echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-docker push $repo/$image:$tag
+docker push $user/$image:$tag
 
