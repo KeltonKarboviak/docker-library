@@ -12,23 +12,32 @@ env:
     - LANGUAGE=python VERSION=2.7
     - LANGUAGE=python VERSION=3.6
     - LANGUAGE=ruby VERSION=2.4
+
+before_install:
+  - ls -al
+
 before_script:
   - env | sort
   - cd "${LANGUAGE}-builder/"
   - LANGUAGE_UPPER=$(echo $LANGUAGE | tr [:lower:] [:upper:])
   - IMAGE="${LANGUAGE}-builder"
+
 script:
   - echo "** Building $IMAGE in $PWD **"
   - docker build --build-arg ${LANGUAGE_UPPER}_VERSION=$VERSION -t "$REPO/$IMAGE:$VERSION" .
 
 after_script:
   - docker images
+
 deploy:
   provider: script
   script: bash docker_push $REPO $IMAGE $VERSION
   on:
     branch: master
+
 notifications:
   slack:
     secure: ywi4CzEyWZtFxAy/sjD9yoMPVHNm49Y33BSAyIW+E6I97ceHXj6yBegcvpSdmcGKNOs33lZEVeIQyKPGUtIukgaTWdVIqKmmocE7fV+39GRRJ7GBEgnwYoUG34WTf2U7VUqpeq7bzLyZ6MavOCrkUi+j4jnn6FbijYu83O7Glp1Aewhim6TrZpZsHCKrdbjXUYNQPPczzBOHp+PKyS2s2PKaY+bSvYUqgTRhCvobYp9go+9kncKwY/zQl3IgXWFhy35FZfHYNANVuzsUGfoEWoLvKhsyKL5gD8tIis57IzNVEGyPGLOS6ztWYhLIsuZfOMqyrehSdeNafGCs3hc5wSdShHI4ts41W+w34a6z7Ir+Q8Em04JiSxNRubfs0COnfCINK0vzxy7n/bBlbkHqoJEcw1FGN0xdblALW0WkzcF1qg+mVtFlBDcfqYod9+A74rFV2HkviGHNnPmw8fmlnK+bmcJi6eetrVnjuHL1RYWmqWJpK9KrLZQ6s3Mn2kEe+VVXA2FdZAUJynC5jty1SoyWssuGer/l3U+4K2kvCglbiySu2XhI2EqwxYv4okd6SxEyCWtfm+nGetIcH59OPZaJaLH6KTk+7civ5jzj1aEBeJayaQXII5IwYxJmIxjUvDTxbUGQgbwHqWBJ2kdWyO/BP/9P4N3Dh54SvbbSA94=
+  on_success: always
+  on_failure: always
 
